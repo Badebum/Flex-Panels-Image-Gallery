@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="panels">
+      <div class="panel panel1">
+        <p>Hey</p>
+        <p>Let's</p>
+        <p>Dance</p>
+      </div>
+      <div class="panel panel2">
+        <p>Give</p>
+        <p>Take</p>
+        <p>Receive</p>
+      </div>
+      <div class="panel panel3">
+        <p>Experience</p>
+        <p>It</p>
+        <p>Today</p>
+      </div>
+      <div class="panel panel4">
+        <p>Life</p>
+        <p>In</p>
+        <p>Motion</p>
+      </div>
+      <div class="panel panel5">
+        <p>Give</p>
+        <p>All</p>
+        <p>To can</p>
+      </div>
+    </div>
+
+    <style>
+      html {
+        box-sizing: border-box;
+        background: #06eea8;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 20px;
+        font-weight: 200;
+      }
+      body {
+        margin: 0;
+      }
+      *,
+      *:before,
+      *:after {
+        box-sizing: inherit;
+      }
+
+      .panels {
+        min-width: 100vh;
+        height: 600px;
+        overflow: hidden;
+        display: flex;
+      }
+
+      .panel {
+        background: rgb(218, 8, 165);
+        box-shadow: inset 0 0 0 5px rgba(255, 255, 255, 0.1);
+        color: white;
+        text-align: center;
+        align-items: center;
+        transition: font-size 0.7s cubic-bezier(0.6, -0.28, 0.735, 0.045),
+          flex 0.7s cubic-bezier(0.075, 0.82, 0.165, 1), background 0.2s;
+        font-size: 20px;
+        background-size: cover;
+        background-position: center;
+        flex: 1;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .panel > * {
+        margin: 0;
+        width: 100%;
+        transition: transform 0.5s;
+        flex: 1 0 auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .panel > *:first-child {
+        transform: translateY(-100%);
+      }
+
+      .panel.open-active > *:first-child {
+        transform: translateY(0);
+      }
+
+      .panel > *:last-child {
+        transform: translateY(100%);
+      }
+
+      .panel.open-active > *:last-child {
+        transform: translateY(0);
+      }
+
+      .panel p {
+        text-transform: uppercase;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+          Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        text-shadow: yellowgreen;
+        font-size: 2em;
+      }
+
+      .panel p:nth-child(2) {
+        font-size: 4em;
+      }
+
+      .panel.open {
+        flex: 5;
+        font-size: 40px;
+      }
+
+      .panel1 {
+        background-image: url(https://cdn.pixabay.com/photo/2021/08/02/10/45/cityscape-6516367_960_720.jpg);
+      }
+      .panel2 {
+        background-image: url(https://cdn.pixabay.com/photo/2021/09/24/20/59/jellyfish-6653502_960_720.jpg);
+      }
+      .panel3 {
+        background-image: url(https://cdn.pixabay.com/photo/2021/10/30/08/28/scooter-6753797_960_720.jpg);
+      }
+      .panel4 {
+        background-image: url(https://cdn.pixabay.com/photo/2021/08/29/15/43/torrent-6583626_960_720.jpg);
+      }
+      .panel5 {
+        background-image: url(https://cdn.pixabay.com/photo/2021/10/28/09/59/city-6749295_960_720.jpg);
+      }
+    </style>
+
+    <script>
+      const panels = document.querySelectorAll('.panel');
+
+      function toggleOpen() {
+        this.classList.toggle('open');
+      }
+      function toggleActive(e) {
+        if (e.propertyName.includes('flex')) {
+          this.classList.toggle('open-active');
+        }
+      }
+
+      panels.forEach(panel => panel.addEventListener('click', toggleOpen));
+      panels.forEach(panel =>
+        panel.addEventListener('transitionend', toggleActive),
+      );
+    </script>
+  </body>
+</html>
